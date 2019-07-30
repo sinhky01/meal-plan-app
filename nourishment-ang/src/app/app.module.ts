@@ -11,6 +11,22 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { InformationComponent } from './information/information.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { RecipeViewComponent } from './recipe-view/recipe-view.component';
+import { IngredientListComponent } from './ingredient-list/ingredient-list.component';
+import { DirectionsComponent } from './directions/directions.component';
+import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
+import { EditIngredientComponent } from './edit-ingredient/edit-ingredient.component';
+import { EditDirectionComponent } from './edit-direction/edit-direction.component';
+import { AccountComponent } from './account/account.component';
+import { EditAccountComponent } from './edit-account/edit-account.component';
+import { SearchComponent } from './search/search.component';
+import { ResultsComponent } from './results/results.component';
+import { ResultEntryComponent } from './result-entry/result-entry.component';
+import { PrintViewComponent } from './print-view/print-view.component';
+import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.component';
 
 
 @NgModule({
@@ -19,7 +35,23 @@ import { RegisterComponent } from './register/register.component';
     NavComponent,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    InformationComponent,
+    DashboardComponent,
+    CalendarComponent,
+    RecipeViewComponent,
+    IngredientListComponent,
+    DirectionsComponent,
+    RecipeEditorComponent,
+    EditIngredientComponent,
+    EditDirectionComponent,
+    AccountComponent,
+    EditAccountComponent,
+    SearchComponent,
+    ResultsComponent,
+    ResultEntryComponent,
+    PrintViewComponent,
+    SuggestedRecipeComponent
   ],
   imports: [
     BrowserModule,
