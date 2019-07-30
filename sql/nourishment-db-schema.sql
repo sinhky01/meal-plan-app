@@ -46,3 +46,5 @@ CREATE TABLE calendar (
     r_id NUMBER(9) CONSTRAINT fk_rid_cal REFERENCES recipe(r_id),
     PRIMARY KEY (dateTime, u_id)
 );
+
+commit;
