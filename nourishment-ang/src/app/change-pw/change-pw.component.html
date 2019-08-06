@@ -1,0 +1,17 @@
+<form>
+  <div class="form-group">
+    <label for="username-input">Enter User Name:
+    </label><br />
+      <input [(ngModel)]="userName" id="username-input" placeholder="User Name" name="username-input" /><br />
+    <label for="password-input">Enter Password:
+    </label ><br />
+      <input [(ngModel)]="password1" id="password-input" placeholder="Password" name="password-input" /><br />
+    <label for="password2-input">Enter Password Again:
+    </label><br />
+      <input [(ngModel)]="password2" id="password2-input" placeholder="Password" name="password2-input" /><br />
+    <h2>Test divs</h2>
+    <div>User Name: {{userName}}</div>
+    <div>Password: {{password1}}</div>
+    <div>Password2: {{password2}}</div>
+  </div>
+</form>

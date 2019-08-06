@@ -1,1 +1,6 @@
-<p>search works!</p>
+<form>
+  <div *ngFor="let id of ids" class="form-group">
+    <app-searchbar></app-searchbar>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -16,6 +16,7 @@ export class CalendarService {
  getMeals(): Observable<Meal[]> {
   //  This next line will return observable result from http request
   //  return of(Meal);
+  return new Observable<Meal[]>();
  }
 
   constructor() { }
