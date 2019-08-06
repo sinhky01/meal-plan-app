@@ -1,1 +1,54 @@
-<p>account works!</p>
+<div class="container">
+    <div class="row">
+        <h4 class="jumbotron">Account</h4>
+    </div>
+    <div class="row">
+        <!--One row and card for the account information
+        and one row and maybe multiple cards for meal favorites-->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{fname}}'s Account Information</h4>
+                <h6 class="card-subtitle mb-2 text-muted">A brief description</h6>
+                <p class="card-text">
+                </p>
+                <ul>
+                    <li><span class="font-weight-bold">First Name: </span><span class="font-italic">{{fname}}</span>
+                    </li>
+                    <li><span class="font-weight-bold">Last Name: </span><span class="font-italic">{{lname}}</span>
+                    </li>
+                    <li><span class="font-weight-bold">User ID: </span><span class="font-italic">{{u_id}}</span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Stored Meal Favorites</h4>
+                <h6 class="card-subtitle mb-2 text-muted">A brief description</h6>
+                <p class="card-text">
+
+                </p>
+                <div *ngFor='let favorite of favorites'>
+                    <ul>
+                        <li><span class="font-weight-bold">{{favorite}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ingredient Preferences</h4>
+                <h6 class="card-subtitle mb-2 text-muted">A brief description</h6>
+                <p class="card-text">
+
+                </p>
+                <div *ngFor='let ingredient of ingredients'>
+                    <ul>
+                        <li><span class="font-weight-bold">{{ingredient}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

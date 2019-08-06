@@ -1,1 +1,38 @@
-<p>edit-account works!</p>
+<div class="container">
+    <div class="row">
+        <h4 class="jumbotron">Edit Account Information</h4>
+    </div>
+    <div class="row">
+        <!--One row and card for the account information
+        and one row and maybe multiple cards for meal favorites-->
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{fname}}'s Account Information</h4>
+                <h6 class="card-subtitle mb-2 text-muted">A brief description</h6>
+                <p class="card-text">
+                </p>
+                <ul>
+                    <li><span class="font-weight-bold">First Name: </span><span class="font-italic">{{fname}}</span>
+                    </li>
+                    <li><span class="font-weight-bold">Last Name: </span><span class="font-italic">{{lname}}</span>
+                    </li>
+                    <li><span class="font-weight-bold">User ID: </span><span class="font-italic">{{u_id}}</span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit Information</h4>
+                <h6 class="card-subtitle mb-2 text-muted">A brief description</h6>
+                <form>
+                    <span class="font-weight-bold">First Name: </span><input type="text" id="fname" name="fname" /><br/>
+                    <span class="font-weight-bold">Last Name: </span><input type="text" id="lname" name="lname" /><br/>
+                    <input type="submit" id="submitbtn" name="submitbtn" value="submit" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
