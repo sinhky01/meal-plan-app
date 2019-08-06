@@ -6,6 +6,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -65,6 +67,7 @@ import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.co
     FormsModule,
     NgbModalModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
