@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RecipeViewComponent implements OnInit {
 
   constructor() { }
-
+  recipeId: number = 1;
   ngOnInit() {
   }
 
