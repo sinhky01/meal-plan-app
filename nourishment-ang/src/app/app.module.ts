@@ -6,6 +6,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
@@ -32,6 +34,9 @@ import { ResultsComponent } from './results/results.component';
 import { ResultEntryComponent } from './result-entry/result-entry.component';
 import { PrintViewComponent } from './print-view/print-view.component';
 import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ChangePwComponent } from './change-pw/change-pw.component';
+
 
 
 @NgModule({
@@ -57,6 +62,8 @@ import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.co
     ResultEntryComponent,
     PrintViewComponent,
     SuggestedRecipeComponent,
+    SearchbarComponent,
+    ChangePwComponent
     
   ],
   imports: [
@@ -65,6 +72,7 @@ import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.co
     FormsModule,
     NgbModalModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({

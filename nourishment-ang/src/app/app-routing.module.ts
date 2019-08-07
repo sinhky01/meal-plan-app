@@ -9,6 +9,9 @@ import { EditAccountComponent } from './edit-account/edit-account.component';
 import { RecipeViewComponent } from './recipe-view/recipe-view.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SearchComponent } from './search/search.component';
+import { ChangePwComponent } from './change-pw/change-pw.component';
 
 
 const routes: Routes = [
@@ -52,6 +55,18 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'searchbar',
+    component: SearchbarComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
+  },
+  {
+    path: 'changepassword',
+    component: ChangePwComponent
   },
   { path: '**', redirectTo: '/main' }
 ];

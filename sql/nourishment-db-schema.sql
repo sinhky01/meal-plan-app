@@ -35,10 +35,11 @@ CREATE TABLE meal_composition (
     units VARCHAR2(100),
     PRIMARY KEY (r_id, i_id)
 );
-CREATE TABLE recipe_characteristic (
-    r_id NUMBER(9) CONSTRAINT fk_rid_char REFERENCES recipe(r_id) PRIMARY KEY,
-    characteristic VARCHAR2(100)
+
+CREATE TABLE characteristic (
+    characteristic VARCHAR2(100) PRIMARY KEY
 );
+
 CREATE TABLE calendar (
     dateTime DATE,
     mealNum NUMBER(1),
