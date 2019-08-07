@@ -16,8 +16,8 @@ export class IngredientListComponent implements OnInit {
   ngOnInit() {
     console.log("Recipe id is " + this.recipeId);
     this.recipeService.fetchIngredients(this.recipeId).subscribe(ingredients => this.ingredients = ingredients, error => console.log(`Error: ${error}`));
-    this.ingredients = [new Ingredient(1,"potato"), new Ingredient(2, "tomato"), new Ingredient(3, "lettuce"), new Ingredient(4,"potato"), new Ingredient(5,"potato"), new Ingredient(6,"potato"), new Ingredient(7,"potato"), new Ingredient(8,"potato"), new Ingredient(9,"potato"), new Ingredient(10,"potato"), new Ingredient(11,"potato"), new Ingredient(12,"potato"), new Ingredient(13,"potato"), new Ingredient(14,"potato")];
-    this.displayIngredients();
+    // this.ingredients = [new Ingredient(1,"potato"), new Ingredient(2, "tomato"), new Ingredient(3, "lettuce"), new Ingredient(4,"potato"), new Ingredient(5,"potato"), new Ingredient(6,"potato"), new Ingredient(7,"potato"), new Ingredient(8,"potato"), new Ingredient(9,"potato"), new Ingredient(10,"potato"), new Ingredient(11,"potato"), new Ingredient(12,"potato"), new Ingredient(13,"potato"), new Ingredient(14,"potato"), new Ingredient(15,"otato"), new Ingredient(16,"tato"), new Ingredient(17,"orange"), new Ingredient(18,"you"), new Ingredient(19,"glad"), new Ingredient(20,"I"), new Ingredient(21,"didn't"), new Ingredient(22,"say")];
+    // this.displayIngredients();
   }
 
 
@@ -34,16 +34,19 @@ export class IngredientListComponent implements OnInit {
           colIter++;
           ingIter++;
         }
-        document.getElementById('ingRow').appendChild(this.createCol(colIngArr));
+        
       }
       else {
+        console.log("More than 16 ingredients");
         while(colIter < this.ingredients.length/4 && ingIter < this.ingredients.length)
         {
           colIngArr.push(this.ingredients[ingIter]);
           colIter++;
           ingIter++;
         }
+        
       }
+      document.getElementById('ingRow').appendChild(this.createCol(colIngArr));
     }
   }
 
