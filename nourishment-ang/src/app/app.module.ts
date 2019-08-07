@@ -34,6 +34,9 @@ import { ResultsComponent } from './results/results.component';
 import { ResultEntryComponent } from './result-entry/result-entry.component';
 import { PrintViewComponent } from './print-view/print-view.component';
 import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ChangePwComponent } from './change-pw/change-pw.component';
+
 
 
 @NgModule({
@@ -59,6 +62,8 @@ import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.co
     ResultEntryComponent,
     PrintViewComponent,
     SuggestedRecipeComponent,
+    SearchbarComponent,
+    ChangePwComponent
     
   ],
   imports: [

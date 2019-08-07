@@ -1,3 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 /*@/* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel Decorative', cursive;
+}
+#nutrition{
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 30px;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
