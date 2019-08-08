@@ -7,8 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
   styleUrls: ['./searchbar.component.css']
 })
 export class SearchbarComponent implements OnInit {
-  
-  
+  ids: String[] = ["Search", "Filter"];  
   
   constructor() { }
 

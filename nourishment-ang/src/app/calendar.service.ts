@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from'rxjs';
 import { Meal } from './meal';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,12 @@ export class CalendarService {
      3) recipe
   */
  getMeals(): Observable<Meal[]> {
-  //  This next line will return observable result from http request
-  //  return of(Meal);
-  return new Observable<Meal[]>();
+   return this.http.get<Meal[]>(this.calendarUrlTemp);
  }
 
-  constructor() { }
+ private calendarUrl = 'api/v1/calendar';
+ // this is a hardwired search for user 1 for now, will need to make the user# parameter mutable
+ private calendarUrlTemp = 'http://localhost:9595/api/v1/calendar/user/1';
+
+  constructor(private http: HttpClient) { }
 }

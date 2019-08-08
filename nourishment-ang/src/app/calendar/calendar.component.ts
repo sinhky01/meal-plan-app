@@ -17,6 +17,8 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
+import { CalendarService } from '../calendar.service';
+import { Meal } from '../meal';
 
 const colors: any = {
   red: {
@@ -43,6 +45,8 @@ export class CalendarComponent implements OnInit {
 
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
+  meals: Meal[];
+  
   view: CalendarView = CalendarView.Month;
 
   CalendarView = CalendarView;
@@ -73,49 +77,13 @@ export class CalendarComponent implements OnInit {
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
+   
+
   ];
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
+  constructor(private modal: NgbModal, private calendarService: CalendarService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -183,8 +151,15 @@ export class CalendarComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 
+  getMeals(): void {
+    this.calendarService.getMeals()
+      .subscribe(meals => this.meals = meals);
+  }
 
   ngOnInit() {
+    // load calendar events for user from db here
+    this.getMeals();
+    console.log(this.meals);
   }
 
 }
