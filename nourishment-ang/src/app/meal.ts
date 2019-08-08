@@ -1,7 +1,10 @@
+import { MealId } from './mealid'
 // The purpose of this class is to be used with calendar service component, at least temporarily
 export class Meal {
-  id: number;
-  date: Date;
-  mealType: String; // i.e. breakfast, lunch, etc.
-  
+  id: MealId;
+  mealNum: number; // number to represent breakfast, lunch, etc.
+  constructor(id: MealId, mealNum: number){
+    this.id = id;
+    this.mealNum = mealNum;
+  }
 }

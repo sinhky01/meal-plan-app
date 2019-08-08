@@ -19,6 +19,7 @@ import {
 } from 'angular-calendar';
 import { CalendarService } from '../calendar.service';
 import { Meal } from '../meal';
+import { MealId } from '../mealid';
 
 const colors: any = {
   red: {
@@ -153,13 +154,25 @@ export class CalendarComponent implements OnInit {
 
   getMeals(): void {
     this.calendarService.getMeals()
-      .subscribe(meals => this.meals = meals);
+      .subscribe(meals => {
+        if(!this.meals){
+          this.meals = new Array<Meal>();
+        }
+        for (let i = 0; i < meals.length; i++) {
+        this.meals.push(new Meal(new MealId(meals[i].id.dateTime, meals[i].id.userId), meals[i].mealNum));
+        console.log("meal" + meals[i]);
+        }
+        console.log(meals);
+      });
   }
 
   ngOnInit() {
     // load calendar events for user from db here
     this.getMeals();
-    console.log(this.meals);
+    
   }
 
+  populateCalendar(){
+    console.log(this.meals);
+  }
 }

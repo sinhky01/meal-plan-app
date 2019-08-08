@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from'rxjs';
 import { Meal } from './meal';
+import { MealId } from './mealid';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
