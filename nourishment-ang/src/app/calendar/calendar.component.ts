@@ -177,10 +177,14 @@ export class CalendarComponent implements OnInit {
     console.log(this.meals);
     for (let i = 0; i < this.meals.length; i++) {
       const mealDate = new Date(this.meals[i].id.dateTime);
+      const hours = this.meals[i].mealNum === 1 ? 8 : this.meals[i].mealNum === 2 ? 12 : 18;
+      mealDate.setHours(hours);
+      const mealDateEnd = new Date(this.meals[i].id.dateTime);
+      mealDateEnd.setHours(hours + 1);
       this.addEvent({
         title: 'New event ' + (i + 1),
         start: mealDate,
-        end: mealDate,
+        end: mealDateEnd,
         color: colors.red,
         draggable: true,
         resizable: {
