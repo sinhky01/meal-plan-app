@@ -36,7 +36,7 @@ import { PrintViewComponent } from './print-view/print-view.component';
 import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ChangePwComponent } from './change-pw/change-pw.component';
-import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -75,7 +75,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
