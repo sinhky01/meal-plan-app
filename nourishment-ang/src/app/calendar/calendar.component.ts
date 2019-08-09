@@ -123,20 +123,21 @@ export class CalendarComponent implements OnInit {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
+  addEvent(addedMeal: any): void {
     this.events = [
       ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      }
+      addedMeal
+      // {
+      //   title: 'New event',
+      //   start: startOfDay(new Date()),
+      //   end: endOfDay(new Date()),
+      //   color: colors.red,
+      //   draggable: true,
+      //   resizable: {
+      //     beforeStart: true,
+      //     afterEnd: true
+      //   }
+      // }
     ];
   }
 
@@ -168,11 +169,25 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     // load calendar events for user from db here
+    sessionStorage.setItem("userId", "1");
     this.getMeals();
-    
   }
 
   populateCalendar(){
     console.log(this.meals);
+    for (let i = 0; i < this.meals.length; i++) {
+      const mealDate = new Date(this.meals[i].id.dateTime);
+      this.addEvent({
+        title: 'New event ' + (i + 1),
+        start: mealDate,
+        end: mealDate,
+        color: colors.red,
+        draggable: true,
+        resizable: {
+          beforeStart: true,
+          afterEnd: true
+        }
+      });
+    }
   }
 }

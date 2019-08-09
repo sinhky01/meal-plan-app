@@ -19,9 +19,9 @@ export class CalendarService {
    return this.http.get<Meal[]>(this.calendarUrlTemp);
  }
 
- private calendarUrl = 'api/v1/calendar';
- // this is a hardwired search for user 1 for now, will need to make the user# parameter mutable
- private calendarUrlTemp = 'http://localhost:9595/api/v1/calendar/user/1';
+ private calendarUrl = 'api/v1/calendar/user/' + sessionStorage.getItem("userId");
+ 
+ private calendarUrlTemp = 'http://localhost:9595/api/v1/calendar/user/' + sessionStorage.getItem("userId");
 
   constructor(private http: HttpClient) { }
 }
