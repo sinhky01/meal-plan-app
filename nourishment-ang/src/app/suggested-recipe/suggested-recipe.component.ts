@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiRecipeService } from '../services/api-recipe.service';
+import { apiRecipe } from '../models/api-recipe.model';
 
 @Component({
   selector: 'app-suggested-recipe',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuggestedRecipeComponent implements OnInit {
 
-  constructor() { }
+  public recipe: apiRecipe;
+
+  constructor(private apiRecipe:ApiRecipeService) { }
 
   ngOnInit() {
+    this.getApiRecipeInfo();
   }
 
+  getApiRecipeInfo(): void {
+    this.apiRecipe.fetchMeal().subscribe(
+      recipe => this.recipe=recipe,
+      error => console.log(`Error: ${error}`)
+    );
+    console.log(this.recipe);
+  }
 }
+
