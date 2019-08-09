@@ -1,6 +1,8 @@
 <form>
   <div *ngFor="let id of ids" class="form-group">
-    <app-searchbar></app-searchbar>
+    <!-- <app-searchbar></app-searchbar> -->
+    <label for="{{id | lowercase}}">{{id}}</label><br />
+    <input type="text" id="{{id}}" />
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
