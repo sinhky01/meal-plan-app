@@ -164,7 +164,8 @@ export class CalendarComponent implements OnInit {
         console.log("meal" + meals[i]);
         }
         console.log(meals);
-      });
+        // this.populateCalendar(); ??
+        });
   }
 
   ngOnInit() {
@@ -193,5 +194,10 @@ export class CalendarComponent implements OnInit {
         }
       });
     }
+  }
+
+  postNew() {
+    this.calendarService.addMeal().subscribe(() => console.log("subscribe log"));
+    console.log("post part 1");
   }
 }
