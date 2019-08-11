@@ -7,15 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditAccountComponent implements OnInit {
 
-  fname: string = "Ricky";
-  lname: string = "Richardson";
-  u_id: number = 178456;
+  fname: string;
+  lname: string;
+  u_id: number;
+  username: string;
   //ingredient: string = "Pepper";
   //favorite: string = "Chicken Bruschetta";
   
   constructor() { }
 
   ngOnInit() {
+    this.fname= sessionStorage.getItem("fname");
+    this.lname= sessionStorage.getItem("lname");
+    this.u_id = parseInt(sessionStorage.getItem("userId"), 10);
+    this.username = sessionStorage.getItem("username");
   }
 
 }

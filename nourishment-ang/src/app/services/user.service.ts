@@ -9,9 +9,9 @@ import { catchError } from 'rxjs/operators'
 })
 export class UserService {
     error: any;
-    url: string = 'https://localhost:4200';
-    //url: string = 'https://localhost:9595';
-
+    //url: string = 'http://localhost:4200';
+    url: string = 'http://localhost:9595';
+    //url: string = 'http://3.130.255.174:9595';
 
     constructor(private http: HttpClient) { }
 

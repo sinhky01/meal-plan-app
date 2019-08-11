@@ -9,10 +9,10 @@ import { UserService } from '../services/user.service';
 })
 export class AccountComponent implements OnInit {
 
-  fname: string = sessionStorage.getItem("fname");
-  lname: string = sessionStorage.getItem("lname");
-  u_id: number = parseInt(sessionStorage.getItem("id"),10);
-  username: string = sessionStorage.getItem("username");
+  fname: string;
+  lname: string;
+  u_id: number;
+  username: string;
   //ingredients: string[] = ["Pepper", 'Chicken', 'Cinnamon'];
   //favorites: string[] = ["Chicken Bruschetta",'Beef Noodle Stew', 'Pork Stir Fry'];
 
@@ -21,25 +21,26 @@ export class AccountComponent implements OnInit {
 
   request: HttpClient;
 
-  constructor(private user:UserService) { }
+  constructor(private user: UserService) { }
 
   ngOnInit() {
-    sessionStorage.setItem("fname","Ricky");
-    sessionStorage.setItem("lname","Rickyson");
-    sessionStorage.setItem("username","fish_are_friends");
-    sessionStorage.setItem("id","1");
 
-    this.getPreferences(parseInt(sessionStorage.getItem("id"),10));
-    this.getHistory(parseInt(sessionStorage.getItem("id"),10));
+    this.fname= sessionStorage.getItem("fname");
+    this.lname= sessionStorage.getItem("lname");
+    this.u_id = parseInt(sessionStorage.getItem("userId"), 10);
+    this.username = sessionStorage.getItem("username");
+
+    this.getPreferences(parseInt(sessionStorage.getItem("userId"), 10));
+    this.getHistory(parseInt(sessionStorage.getItem("userId"), 10));
 
   }
 
-  getPreferences(id: number): void{
+  getPreferences(id: number): void {
     this.user.getPreferences(id).subscribe(
       ingredients => this.ingredients = ingredients
     );
   }
-  getHistory(id: number): void{
+  getHistory(id: number): void {
     this.user.getHistory(id).subscribe(
       favorites => this.favorites = favorites
     );
