@@ -24,5 +24,9 @@ export class SuggestedRecipeComponent implements OnInit {
     );
     console.log(this.recipe);
   }
+
+  refresh(){
+    this.getApiRecipeInfo();
+  }
 }
 

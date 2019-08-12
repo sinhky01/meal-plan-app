@@ -13,25 +13,25 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { SearchComponent } from './search/search.component';
 import { ChangePwComponent } from './change-pw/change-pw.component';
 import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
-  {
-    path: ' ',
-    redirectTo: '/main',
-    pathMatch: 'full'
-  },
+  //{ path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   {
     path: 'main',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'calendar',
-    component: CalendarComponent
+    component: CalendarComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'editrecipe',
-    component: RecipeEditorComponent
+    component: RecipeEditorComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'information',
@@ -39,15 +39,18 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: AccountComponent
+    component: AccountComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'editaccount',
-    component: EditAccountComponent
+    component: EditAccountComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'recipe',
-    component: RecipeViewComponent
+    component: RecipeViewComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -59,22 +62,28 @@ const routes: Routes = [
   },
   {
     path: 'searchbar',
-    component: SearchbarComponent
+    component: SearchbarComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'randomRecipe',
-    component: SuggestedRecipeComponent
+    component: SuggestedRecipeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'changepassword',
-    component: ChangePwComponent
+    component: ChangePwComponent,
+    canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '/main' }
 ];
+
+export const routing = RouterModule.forRoot(routes);
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

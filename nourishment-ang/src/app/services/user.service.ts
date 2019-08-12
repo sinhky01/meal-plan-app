@@ -9,9 +9,9 @@ import { catchError } from 'rxjs/operators'
 })
 export class UserService {
     error: any;
-    url: string = 'https://localhost:4200';
-    //url: string = 'https://localhost:9595';
-
+    //url: string = 'http://localhost:4200';
+    url: string = 'http://localhost:9595';
+    //url: string = 'http://3.130.255.174:9595';
 
     constructor(private http: HttpClient) { }
 
@@ -19,9 +19,9 @@ export class UserService {
         return this.http.get<User>(`${this.url}/api/v1/user/${id}`).pipe(catchError(this.handleError));
 
     }
-    public checkLogin(username: string, password: string): Observable<User>{
-        return this.http.post<User>(`${this.url}/api/v1/user/login`,JSON.stringify(new User(username,password))).pipe(catchError(this.handleError));
-    }
+    // public checkLogin(username: string, password: string): Observable<User>{
+    //     return this.http.post<User>(`${this.url}/api/v1/user/login`,JSON.stringify(new User(username,password))).pipe(catchError(this.handleError));
+    // }
     public getPreferences(id: number): Observable<Array<string>>{
         return this.http.get<Array<string>>(`${this.url}/api/v1/preferences/preferences/${id}`).pipe(catchError(this.handleError));
     }
