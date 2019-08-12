@@ -19,7 +19,7 @@ export class CalendarService {
     return this.http.get<Meal[]>(this.calendarUrl);
   }
 
-  addMeal(): Observable<Meal> {
+  addMeal(mealDate: Date, userId: number, mealNum: number, recipeId: number, name: string, directions: string): Observable<Meal> {
     const getCalendarUrl = "api/v1/calendar/meal";
     const getCalendarUrlTemp = "http://localhost:9595/api/v1/calendar/meal";
     const uId = sessionStorage.getItem("userId");
@@ -30,15 +30,15 @@ export class CalendarService {
     };
     const postObject = JSON.stringify({
       "id": {
-        "dateTime": new Date("2019-08-11"),
-        "userId": 1 //uId
+        "dateTime": mealDate,
+        "userId": userId //uId
       },
-      "mealNum": 1,
-      "user": "1", //uId,
+      "mealNum": mealNum,
+      "user": userId, //uId,
       "recipe": {
-        "recipeId": 11,
-        "name": "Oatmeal Taco",
-        "directions": "Cook oatmeal, put into taco shell"
+        "recipeId": recipeId,
+        "name": name,
+        "directions": directions
       }
     });
     console.log("post part 2");

@@ -89,5 +89,22 @@
   >
   </mwl-calendar-day-view>
 </div>
-<button class="btn btn-danger" (click)="populateCalendar()">Get Meals</button>
-<button class="btn btn-danger" (click)="postNew()">Add Meals</button>
+  <div class="row">
+  <div class="col">
+    <button class="btn btn-danger" (click)="populateCalendar()">Get Meals</button>
+  </div>
+  <div class="col">
+    <button class="btn btn-danger" (click)="postNew()">Add Meal</button><br />
+    <input placeholder="Recipe Name" type="text" [(ngModel)]="mealName"><br />
+    <input type="date" [(ngModel)]="mealDate"><br />
+    <label>Breakfast &nbsp;
+      <input type="radio" name="mealType" value="breakfast" [(ngModel)]="mealType" /> &nbsp;
+    </label>
+    <label>Lunch &nbsp;
+      <input type="radio" name="mealType" value="lunch" [(ngModel)]="mealType" /> &nbsp;
+    </label>
+    <label>Dinner &nbsp;
+      <input type="radio" name="mealType" value="dinner" [(ngModel)]="mealType" />
+    </label>
+  </div>
+</div>
