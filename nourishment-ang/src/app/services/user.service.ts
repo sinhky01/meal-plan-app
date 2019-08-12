@@ -16,17 +16,17 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     public fetchUser(id: number): Observable<User>{
-        return this.http.get<User>(`${this.url}/api/v1/user/${id}`).pipe(catchError(this.handleError));
+        return this.http.get<User>(`api/v1/user/${id}`).pipe(catchError(this.handleError));
 
     }
     // public checkLogin(username: string, password: string): Observable<User>{
     //     return this.http.post<User>(`${this.url}/api/v1/user/login`,JSON.stringify(new User(username,password))).pipe(catchError(this.handleError));
     // }
     public getPreferences(id: number): Observable<Array<string>>{
-        return this.http.get<Array<string>>(`${this.url}/api/v1/preferences/preferences/${id}`).pipe(catchError(this.handleError));
+        return this.http.get<Array<string>>(`api/v1/preferences/preferences/${id}`).pipe(catchError(this.handleError));
     }
     public getHistory(id: number):Observable<Array<string>>{
-        return this.http.get<Array<string>>(`${this.url}/api/v1/history/user/${id}/favorited`).pipe(catchError(this.handleError));
+        return this.http.get<Array<string>>(`api/v1/history/user/${id}/favorited`).pipe(catchError(this.handleError));
     }
     public handleError(error: HttpErrorResponse){
         return Observable.throw(error.statusText);
