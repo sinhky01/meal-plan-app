@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { SearchComponent } from './search/search.component';
 import { ChangePwComponent } from './change-pw/change-pw.component';
+import { SuggestedRecipeComponent } from './suggested-recipe/suggested-recipe.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent
+  },
+  {
+    path: 'randomRecipe',
+    component: SuggestedRecipeComponent
   },
   {
     path: 'changepassword',

@@ -17,6 +17,9 @@ import {
   CalendarEventTimesChangedEvent,
   CalendarView
 } from 'angular-calendar';
+import { CalendarService } from '../calendar.service';
+import { Meal } from '../meal';
+import { MealId } from '../mealid';
 
 const colors: any = {
   red: {
@@ -43,6 +46,8 @@ export class CalendarComponent implements OnInit {
 
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
+  meals: Meal[];
+  
   view: CalendarView = CalendarView.Month;
 
   CalendarView = CalendarView;
@@ -73,49 +78,13 @@ export class CalendarComponent implements OnInit {
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: new Date(),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      },
-      draggable: true
-    }
+   
+
   ];
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) {}
+  constructor(private modal: NgbModal, private calendarService: CalendarService) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -154,20 +123,21 @@ export class CalendarComponent implements OnInit {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
+  addEvent(addedMeal: any): void {
     this.events = [
       ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      }
+      addedMeal
+      // {
+      //   title: 'New event',
+      //   start: startOfDay(new Date()),
+      //   end: endOfDay(new Date()),
+      //   color: colors.red,
+      //   draggable: true,
+      //   resizable: {
+      //     beforeStart: true,
+      //     afterEnd: true
+      //   }
+      // }
     ];
   }
 
@@ -183,8 +153,45 @@ export class CalendarComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
 
-
-  ngOnInit() {
+  getMeals(): void {
+    this.calendarService.getMeals()
+      .subscribe(meals => {
+        if(!this.meals){
+          this.meals = new Array<Meal>();
+        }
+        for (let i = 0; i < meals.length; i++) {
+        this.meals.push(new Meal(new MealId(meals[i].id.dateTime, meals[i].id.userId), meals[i].mealNum));
+        console.log("meal" + meals[i]);
+        }
+        console.log(meals);
+      });
   }
 
+  ngOnInit() {
+    // load calendar events for user from db here
+    sessionStorage.setItem("userId", "1");
+    this.getMeals();
+  }
+
+  populateCalendar(){
+    console.log(this.meals);
+    for (let i = 0; i < this.meals.length; i++) {
+      const mealDate = new Date(this.meals[i].id.dateTime);
+      const hours = this.meals[i].mealNum === 1 ? 8 : this.meals[i].mealNum === 2 ? 12 : 18;
+      mealDate.setHours(hours);
+      const mealDateEnd = new Date(this.meals[i].id.dateTime);
+      mealDateEnd.setHours(hours + 1);
+      this.addEvent({
+        title: 'New event ' + (i + 1),
+        start: mealDate,
+        end: mealDateEnd,
+        color: colors.red,
+        draggable: true,
+        resizable: {
+          beforeStart: true,
+          afterEnd: true
+        }
+      });
+    }
+  }
 }
