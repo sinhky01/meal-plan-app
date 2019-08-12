@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
   user: User;
   
   
-  url: string = 'http://localhost:9595';
+  //url: string = 'http://localhost:9595';
+  url: string = 'http://3.130.255.174:9595';
 
   constructor(
     private http: HttpClient,

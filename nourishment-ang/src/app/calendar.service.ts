@@ -21,7 +21,7 @@ export class CalendarService {
 
   addMeal(mealDate: Date, userId: number, mealNum: number, recipeId: number, name: string, directions: string): Observable<Meal> {
     const getCalendarUrl = "api/v1/calendar/meal";
-    const getCalendarUrlTemp = "http://localhost:9595/api/v1/calendar/meal";
+    const getCalendarUrlTemp = "http://3.130.255.174:9595/api/v1/calendar/meal";
     const uId = sessionStorage.getItem("userId");
     const httpOptions = {
       headers: new HttpHeaders({

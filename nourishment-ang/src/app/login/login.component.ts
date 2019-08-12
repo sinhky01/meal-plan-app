@@ -14,7 +14,8 @@ import { User } from '../models/user.model';
 export class LoginComponent implements OnInit {
   
   // loginForm: FormGroup;
-  url: string = 'http://localhost:9595';
+  //url: string = 'http://localhost:9595';
+  url:string='http://3.130.255.174:9595';
   username: string = '';
   password: string = '';
   user: User;
