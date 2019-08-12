@@ -45,8 +45,11 @@ const colors: any = {
 export class CalendarComponent implements OnInit {
 
     @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-
+  
   meals: Meal[];
+  mealDate: Date;
+  mealName: string;
+  mealType: string;
   
   view: CalendarView = CalendarView.Month;
 
@@ -164,13 +167,15 @@ export class CalendarComponent implements OnInit {
         console.log("meal" + meals[i]);
         }
         console.log(meals);
-      });
+        // this.populateCalendar(); ??
+        });
   }
 
   ngOnInit() {
     // load calendar events for user from db here
     sessionStorage.setItem("userId", "1");
     this.getMeals();
+    
   }
 
   populateCalendar(){
@@ -182,7 +187,7 @@ export class CalendarComponent implements OnInit {
       const mealDateEnd = new Date(this.meals[i].id.dateTime);
       mealDateEnd.setHours(hours + 1);
       this.addEvent({
-        title: 'New event ' + (i + 1),
+        title: 'Meal ' + (i + 1),
         start: mealDate,
         end: mealDateEnd,
         color: colors.red,
@@ -193,5 +198,10 @@ export class CalendarComponent implements OnInit {
         }
       });
     }
+  }
+
+  postNew() {
+    this.calendarService.addMeal(this.mealDate, parseInt(sessionStorage.getItem("userId")), (this.mealType === "breakfast" ? 1 : this.mealType === "lunch" ? 2 : 3), 1, this.mealName, "directions").subscribe((res) => console.log("subscribe log: " + res));
+    console.log("post part 1");
   }
 }
