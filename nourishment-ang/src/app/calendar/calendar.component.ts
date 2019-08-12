@@ -187,7 +187,7 @@ export class CalendarComponent implements OnInit {
       const mealDateEnd = new Date(this.meals[i].id.dateTime);
       mealDateEnd.setHours(hours + 1);
       this.addEvent({
-        title: 'Event ' + (i + 1),
+        title: 'Meal ' + (i + 1),
         start: mealDate,
         end: mealDateEnd,
         color: colors.red,
@@ -201,7 +201,7 @@ export class CalendarComponent implements OnInit {
   }
 
   postNew() {
-    this.calendarService.addMeal(this.mealDate, parseInt(sessionStorage.getItem("userId")), (this.mealType === "breakfast" ? 1 : this.mealType === lunch ? 2 : 3), 1, this.mealName, "directions").subscribe((res) => console.log("subscribe log: " + res));
+    this.calendarService.addMeal(this.mealDate, parseInt(sessionStorage.getItem("userId")), (this.mealType === "breakfast" ? 1 : this.mealType === "lunch" ? 2 : 3), 1, this.mealName, "directions").subscribe((res) => console.log("subscribe log: " + res));
     console.log("post part 1");
   }
 }
