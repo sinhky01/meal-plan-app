@@ -17,12 +17,16 @@ export class RecipeService {
 
   //TODO set get path based on id passed
   public fetchRecipe(id: number): Observable<Recipe> {
-    return this.http.get<Recipe>(this.uriBase + 'recipe/view/1').pipe(catchError(this.handleError));
+    return this.http.get<Recipe>(this.uriBase + 'recipe/view/' + id).pipe(catchError(this.handleError));
+  }
+
+  public fetchAllRecipes(): Observable<Array<Recipe>> {
+    return this.http.get<Array<Recipe>>(this.uriBase + 'recipe/view/all').pipe(catchError(this.handleError));
   }
 
   //TODO set path based on recipeId passed. Server should return as array of ingredients
   public fetchIngredients(recipeId: number):Observable<Array<Ingredient>> {
-    return this.http.get<Array<Ingredient>>(this.uriBase + 'ingredients/meal/1').pipe(catchError(this.handleError));
+    return this.http.get<Array<Ingredient>>(this.uriBase + 'ingredients/meal/' + recipeId).pipe(catchError(this.handleError));
   }
 
   public handleError(error: HttpErrorResponse) {

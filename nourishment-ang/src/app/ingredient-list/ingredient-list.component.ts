@@ -52,7 +52,6 @@ export class IngredientListComponent implements OnInit {
   createCol(colIng: Array<Ingredient>): HTMLDivElement {
     let rowDiv: HTMLDivElement = document.createElement('div');
     rowDiv.setAttribute("class", "col-md-3 h-100");
-    rowDiv.setAttribute("style", "border: 2px solid orange; border-radius: 5px");
     let entryList: HTMLUListElement = document.createElement("ul");
     colIng.forEach(element => {
       let elementEntry: HTMLLIElement = document.createElement("li");

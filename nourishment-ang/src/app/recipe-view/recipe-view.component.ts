@@ -14,6 +14,13 @@ export class RecipeViewComponent implements OnInit {
   recipe: Recipe;
 
   ngOnInit() {
+    try {
+      let tmpInt: number = parseInt(localStorage.getItem('selectedRecipe'));
+      this.recipeId = tmpInt;
+      console.log("read recipe as " + tmpInt);
+    } catch (error) {
+      console.log('Failed to get current recipe');
+    }
     this.recipeService.fetchRecipe(this.recipeId).subscribe(recipe => this.recipe = recipe, error => console.log(`Error: ${error}`), () => this.displayRecipe());
   }
 
