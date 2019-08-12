@@ -12,7 +12,7 @@ import {catchError} from 'rxjs/operators';
 })
 export class RecipeService {
   error: any;
-  readonly uriBase: string = "http://3.130.255.174:9595/api/v1/";
+  readonly uriBase: string = "api/v1/";
   constructor(private http:HttpClient) { }
 
   //TODO set get path based on id passed

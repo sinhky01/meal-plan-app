@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       this.user.fname = this.fname;
       this.user.lname = this.lname;
       this.user.password = this.password;
-      this.http.post<User>(`${this.url}/api/v1/user/user`, JSON.stringify(this.user),httpOptions).subscribe(
+      this.http.post<User>(`api/v1/user/user`, JSON.stringify(this.user),httpOptions).subscribe(
         user => this.user = user
       );
 
