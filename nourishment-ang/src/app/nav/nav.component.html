@@ -36,7 +36,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" routerLink="/account">Account Info</a>
-          <a class="dropdown-item" routerLInk="/information">My Preferences</a>
+          <a class="dropdown-item" routerLink="/information">My Preferences</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="/login" (click)="logout()">Logout</a>
         </div>
       </li>
     </ul>

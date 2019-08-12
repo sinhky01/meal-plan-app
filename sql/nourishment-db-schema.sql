@@ -3,7 +3,7 @@ CREATE TABLE appUser (
     u_id NUMBER(9) PRIMARY KEY, 
     fname VARCHAR2(100),
     lname VARCHAR2(100),
-    uname VARCHAR2(100), 
+    uname VARCHAR2(100) UNIQUE, 
     pass VARCHAR2(100)
 );
 CREATE TABLE ingredient (
@@ -47,5 +47,19 @@ CREATE TABLE calendar (
     r_id NUMBER(9) CONSTRAINT fk_rid_cal REFERENCES recipe(r_id),
     PRIMARY KEY (dateTime, u_id)
 );
+
+CREATE SEQUENCE u_seq
+    START WITH 1
+    INCREMENT BY 1
+;
+
+CREATE SEQUENCE i_seq
+    START WITH 1
+    INCREMENT BY 1
+;
+CREATE SEQUENCE r_seq
+    START WITH 1
+    INCREMENT BY 1
+;
 
 commit;

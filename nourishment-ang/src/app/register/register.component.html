@@ -9,35 +9,34 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Register</h5>
-                        <form class="form-register">
+                        <form class="form-register" (ngSubmit)="onSubmit()">
                             <div class="form-label-group">
                                 <span>Username:</span><br>
-                                <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+                                <input type="text" id="username" name="username" class="form-control" placeholder="Username" [(ngModel)]="this.username"
                                     required autofocus>
                                 <!-- <label for="inputEmail">Email address</label> -->
                             </div>
                             <div class="form-label-group">
                                     <span>First name:</span><br>
-                                    <input type="text" id="fname" name="fname" class="form-control" placeholder="First"
+                                    <input type="text" id="fname" name="fname" class="form-control" placeholder="First Name" [(ngModel)]="this.fname"
                                         required autofocus>
                                     <!-- <label for="inputEmail">Email address</label> -->
                             </div>
                             <div class="form-label-group">
                                     <span>Last name:</span><br>
-                                    <input type="text" id="lname" name="lname" class="form-control" placeholder="Last"
+                                    <input type="text" id="lname" name="lname" class="form-control" placeholder="Last Name" [(ngModel)]="this.lname"
                                         required autofocus>
                                     <!-- <label for="inputEmail">Email address</label> -->
                             </div>
                             <div class="form-label-group">
                                 <span>Password:</span><br>
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="this.password"
                                     required>
                                 <!-- <label for="inputPassword">Password</label> -->
                             </div>
                             <div class="form-label-group">
                                     <span>Confirm Password:</span><br>
-                                    <input type="password" id="passwordCon" name="passwordCon" class="form-control" placeholder="Password Confirm"
-                                        required>
+                                    <input type="password" id="passwordCon" name="passwordCon" class="form-control" placeholder="Password Confirm" [(ngModel)]="this.passwordConfirm" required>
                                     <!-- <label for="inputPassword">Password</label> -->
                             </div>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>

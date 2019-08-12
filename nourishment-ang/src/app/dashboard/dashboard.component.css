@@ -7,3 +7,7 @@
 #calendarCard{
     background-color: brown;
 }
+
+img {
+    object-fit: cover;
+}

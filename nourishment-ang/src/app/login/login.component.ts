@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
     this.http.post<User>(`${this.url}/api/v1/user/login?user=${this.username}`,{}).subscribe(
       user => this.user = user
     );
-    console.log('before the first check on the user object')
+    console.log('before the first check on the user object');
+    console.log(this.user);
     if(this.user){
       console.log("passed the truthy User check");
       if(this.password === this.user.password){
