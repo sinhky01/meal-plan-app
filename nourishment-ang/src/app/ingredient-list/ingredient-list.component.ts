@@ -15,9 +15,8 @@ export class IngredientListComponent implements OnInit {
 
   ngOnInit() {
     console.log("Recipe id is " + this.recipeId);
-    this.recipeService.fetchIngredients(this.recipeId).subscribe(ingredients => this.ingredients = ingredients, error => console.log(`Error: ${error}`));
-    // this.ingredients = [new Ingredient(1,"potato"), new Ingredient(2, "tomato"), new Ingredient(3, "lettuce"), new Ingredient(4,"potato"), new Ingredient(5,"potato"), new Ingredient(6,"potato"), new Ingredient(7,"potato"), new Ingredient(8,"potato"), new Ingredient(9,"potato"), new Ingredient(10,"potato"), new Ingredient(11,"potato"), new Ingredient(12,"potato"), new Ingredient(13,"potato"), new Ingredient(14,"potato"), new Ingredient(15,"otato"), new Ingredient(16,"tato"), new Ingredient(17,"orange"), new Ingredient(18,"you"), new Ingredient(19,"glad"), new Ingredient(20,"I"), new Ingredient(21,"didn't"), new Ingredient(22,"say")];
-    // this.displayIngredients();
+    this.recipeService.fetchIngredients(this.recipeId).subscribe(ingredients => this.ingredients = ingredients, error => console.log(`Error: ${error}`), () => this.displayIngredients());
+    
   }
 
 
@@ -53,11 +52,10 @@ export class IngredientListComponent implements OnInit {
   createCol(colIng: Array<Ingredient>): HTMLDivElement {
     let rowDiv: HTMLDivElement = document.createElement('div');
     rowDiv.setAttribute("class", "col-md-3 h-100");
-    rowDiv.setAttribute("style", "border: 2px solid orange; border-radius: 5px");
     let entryList: HTMLUListElement = document.createElement("ul");
     colIng.forEach(element => {
       let elementEntry: HTMLLIElement = document.createElement("li");
-      elementEntry.innerHTML = element.name;
+      elementEntry.innerHTML = element.usedBy[0].quantity + " " + element.usedBy[0].units + " " + element.ingredient;
       entryList.appendChild(elementEntry);
     });
     rowDiv.appendChild(entryList);
